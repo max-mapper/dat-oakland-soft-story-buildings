@@ -14,7 +14,6 @@ module.exports = function(cb) {
       var name = path.basename(file, path.extname(file))
       mbtiles[name] = new MBTiles(file, noop)
     })
-    console.log(mbtiles)
     var geocoder = new Carmen(mbtiles)
     cb(null, function(formatter) { return new GeocodeStream(geocoder, formatter) })
   })

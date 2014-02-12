@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "if [ ! -f mbtiles/alameda-county-addr.mbtiles ]; then mkdir mbtiles; curl -fo mbtiles/alameda-county-addr.mbtiles http://mapbox-carmen.s3.amazonaws.com/other/dat-oakland-soft-story-buildings/alameda-county-addr.mbtiles; fi",
-    "start": "node index.js"
+    "start": "DEBUG=* node index.js"
   },
   "repository": {
     "type": "git",
