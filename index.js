@@ -1,4 +1,4 @@
-var port = process.env.PORT || 8080
+var port = process.env.PORT || 6461
 
 var request = require('request')
 var Dat = require('dat')
@@ -17,15 +17,23 @@ require('./geocoder')(function(err, geocoderStream) {
 
   function fetch() {
     console.log(JSON.stringify({"starting": new Date()}))
+    
     var csv2json = bcsv({ json: true })
+    
     var geocoder = geocoderStream(function formatter(obj) {
       return [obj['Street #'], obj['Street Name'], obj['Street Type']].join(' ')
     })
-    request(dataURL).pipe(csv2json).pipe(geocoder)
-      // .on('data', function(obj) {
-      //   console.log(obj)
-      // })
-      
-    // var writeStream = dat.createWriteStream({ json: true })
+    
+    var writeStream = dat.createWriteStream({
+      objects: true,
+      primary: ['Parcel #', 'Record #'],
+      hash: true
+    })
+    
+    request(dataURL).pipe(csv2json).pipe(geocoder).pipe(writeStream)
+    
+    writeStream.on('end', function() {
+      console.log(JSON.stringify({"finished": new Date()}))
+    })
   }
 })
