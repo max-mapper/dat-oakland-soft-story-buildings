@@ -4,7 +4,7 @@
   "description": "raw data for oakland addresses:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/maxogden/dat-oakland-soft-story-buildings/issues"
   },
-  "homepage": "https://github.com/maxogden/dat-oakland-soft-story-buildings"
+  "homepage": "https://github.com/maxogden/dat-oakland-soft-story-buildings",
+  "dependencies": {
+    "dat": "~2.8.1",
+    "request": "~2.33.0",
+    "binary-csv": "~0.1.7"
+  }
 }
