@@ -19,6 +19,11 @@
   "dependencies": {
     "dat": "~2.8.1",
     "request": "~2.33.0",
-    "binary-csv": "~0.1.7"
+    "binary-csv": "~0.1.7",
+    "geocoder": "~0.1.0",
+    "mbtiles": "~0.2.9",
+    "carmen": "maxogden/carmen#prebuilt-mapnik-dep",
+    "glob": "~3.2.8",
+    "through2": "~0.4.1"
   }
 }
