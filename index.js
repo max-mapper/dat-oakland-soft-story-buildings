@@ -23,7 +23,9 @@ require('./geocoder')(function(err, geocoderStream) {
     var csv2json = bcsv({ json: true })
     
     var geocoder = geocoderStream(function formatter(obj) {
-      return [obj['Street #'], obj['Street Name'], obj['Street Type']].join(' ')
+      var addr = [obj['Street #'], obj['Street Name'], obj['Street Type']].join(' ')
+      console.log(addr)
+      return addr
     })
     
     var writeStream = dat.createWriteStream({
